@@ -1,0 +1,26 @@
+{
+  "name": "prueba-tecnica",
+  "version": "1.0.0",
+  "description": "Una simple prueba Tecnica",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DenisVargas/Prueba-Tecnica.git"
+  },
+  "author": "Denis Vargas Rivero",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DenisVargas/Prueba-Tecnica/issues"
+  },
+  "homepage": "https://github.com/DenisVargas/Prueba-Tecnica#readme",
+  "dependencies": {
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6",
+    "uuid": "^9.0.0"
+  }
+}

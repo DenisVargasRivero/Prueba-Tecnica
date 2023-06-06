@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Usuario</title>
+</head>
+<body>
+    <h1>Detalles del Usuario</h1>
+    <p id="username"></p>
+    <button id="logout-btn">Cerrar Sesión</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Obtener el nombre de usuario del local storage o de la cookie, dependiendo de cómo lo almacenes en tu aplicación
+            const username = localStorage.getItem('username') || document.cookie.replace(/(?:(?:^|.*;\s*)username\s*=\s*([^;]*).*$)|^.*$/, "$1");
+            const usernameElement = document.getElementById('username');
+            const logoutBtn = document.getElementById('logout-btn');
+
+            // Mostrar el nombre de usuario en el elemento correspondiente
+            usernameElement.textContent = `Nombre de usuario: ${username}`;
+
+            // Agregar un evento de clic al botón de cerrar sesión
+            logoutBtn.addEventListener('click', () => {
+                // Realizar una solicitud al endpoint /logout para cerrar sesión
+                fetch('/logout', {
+                    method: 'POST',
+                    credentials: 'same-origin' // Incluir las credenciales en la solicitud si es necesario
+                })
+                .then(response => {
+                    // Manejar la respuesta del servidor
+                    if (response.ok) {
+                        // Redireccionar al inicio de sesión o a otra página
+                        window.location.href = '/index.html';
+                    } else {
+                        console.log('Error al cerrar la sesión');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error en la solicitud:', error);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
