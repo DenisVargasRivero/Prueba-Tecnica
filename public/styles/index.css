@@ -1,0 +1,65 @@
+/* Content */
+#content {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    padding: 0px;
+    flex-wrap: nowrap;
+}
+/* Title */
+#content h1 {
+    width: max-content;
+    height: max-content;
+    text-shadow: 10px 10px 4px rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Roboto Serif';
+    font-style: normal;
+    font-size: 148px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0px;
+    text-decoration: none;
+    text-transform: none;
+}
+/* CA_Button */
+#ca-button {
+    position: relative;
+    display: flex;
+    z-index: 1;
+    width: 347px;
+    height: 128px;
+    border-radius: 20px;
+    background-color: rgba(255, 115, 38, 1);
+    border: 10px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 10px 10px 4px 0px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#ca-button:hover{
+    background-color: rgb(255, 138, 75);
+}
+/* Text */
+#ca-button p {
+    z-index: 2;
+    width: fit-content;
+    height: fit-content;
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.2);
+    font-family: 'Ubuntu Mono', 'Sans Serif';
+    font-style: normal;
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0px;
+    text-decoration: none;
+    text-transform: none;
+    text-align: center;
+    margin: 0px;
+}

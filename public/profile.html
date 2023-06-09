@@ -5,43 +5,109 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles del Usuario</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/profile.css">
+    <link rel="icon" href="/icons/reso.svg" type="image/svg+xml">
 </head>
 <body>
-    <h1>Detalles del Usuario</h1>
-    <p id="username"></p>
-    <button id="logout-btn">Cerrar Sesión</button>
+    <svg display="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="close-icon"  viewBox="0 0 65 65">
+            <path class="fills" style="fill:#fff;fill-opacity:1" d="m16.859 50.984-2.843-2.843L29.656 32.5l-15.64-15.641 2.843-2.843L32.5 29.656l15.641-15.64 2.843 2.843L35.344 32.5l15.64 15.641-2.843 2.843L32.5 35.344l-15.641 15.64Z"/>
+        </symbol>
+    </svg>
+    <svg display="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="edit-icon" viewBox="0 0 65 65">
+            <path class="fills" style="fill:#000;fill-opacity:1" d="M13.562 51.438h2.612l26.3-26.299-2.613-2.613-26.299 26.3v2.612Zm36.451-28.852-7.599-7.599L47.401 10 55 17.599l-4.987 4.987ZM10 55v-7.599L39.921 17.48l7.599 7.599L17.599 55H10Zm31.168-31.168-1.307-1.306 2.613 2.613-1.306-1.307Z"/>
+        </symbol>
+    </svg>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Obtener el nombre de usuario del local storage o de la cookie, dependiendo de cómo lo almacenes en tu aplicación
-            const username = localStorage.getItem('username') || document.cookie.replace(/(?:(?:^|.*;\s*)username\s*=\s*([^;]*).*$)|^.*$/, "$1");
-            const usernameElement = document.getElementById('username');
-            const logoutBtn = document.getElementById('logout-btn');
+    <div id="Scene-Container">
+        <div id="header">
+            <h2>CodeCheck Task Manager</h2>
+            <h1 id="username">Denis</h1>
+            <div id="session-container">
+                <div id="profile" class="hidden" onclick="openProfile()" onmouseenter="change_profile_icon_color(true)" onmouseleave="change_profile_icon_color(false)">
+                    <div id="profile-icon-placeholder"></div>
+                    <p id="profile-button-text" class="profile-text">Perfil</p>
+                </div>
+                <div id="session" onclick="closeSession()" onmouseenter="sessionIcon_update(true)" onmouseleave="sessionIcon_update(false)">
+                    <div id="session-icon-placeholder"></div>
+                    <p class="profile-text">Cerrar sesion</p>
+                </div>
+            </div>
+        </div>
+        <div id="content" class="grid-container">
+            <div id="selectedTask" class="flexbox-vertical">
+                <h1>Tareas</h1>
+                <input type="text" name="Field" id="selected-title">
+                <input type="text" name="Field" id="selected-description">
+            </div>
+            <div id="tasklist" class="grid-container">
+                <div id="add-task-container">
+                    <input id="add-task-input" type="text" name="Field" id="new-task-field">
+                    <div id="add-task-button" onclick="addTask()">
+                        <svg id="add-task-button-icon" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 65">
+                            <style>
+                                .fills{
+                                    fill:#fff;
+                                    fill-opacity:1
+                                }
+                            </style>
+                            <g>
+                              <path class="fills" d="M30.469 51.458V34.531H13.542v-4.062h16.927V13.542h4.062v16.927h16.927v4.062H34.531v16.927h-4.062Z"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div id="tasks-container">
+                    <div class="task-item">
+                        <input class="task-checkbox" type="checkbox" >
+                        <input class="task-input-field" type="text" name="Field">
+                        <div class="task-button-delete" onclick="deleteTask(1)">
+                            <svg class="task-button-icon">
+                                <use href="#close-icon" x="0" y="0" />
+                            </svg>
+                        </div>
+                        <div class="task-button-edit" onclick="editTask(1)">
+                            <svg class="task-button-icon">
+                                <use href="#edit-icon" x="0" y="0" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <input class="task-checkbox" type="checkbox" >
+                        <input class="task-input-field" type="text" name="Field">
+                        <div class="task-button-delete" onclick="deleteTask(1)">
+                            <svg class="task-button-icon">
+                                <use href="#close-icon" x="0" y="0" />
+                            </svg>
+                        </div>
+                        <div class="task-button-edit" onclick="editTask(1)">
+                            <svg class="task-button-icon">
+                                <use href="#edit-icon" x="0" y="0" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <input class="task-checkbox" type="checkbox" >
+                        <input class="task-input-field" type="text" name="Field">
+                        <div class="task-button-delete" onclick="deleteTask(1)">
+                            <svg class="task-button-icon">
+                                <use href="#close-icon" x="0" y="0" />
+                            </svg>
+                        </div>
+                        <div class="task-button-edit" onclick="editTask(1)">
+                            <svg class="task-button-icon">
+                                <use href="#edit-icon" x="0" y="0" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            // Mostrar el nombre de usuario en el elemento correspondiente
-            usernameElement.textContent = `Nombre de usuario: ${username}`;
-
-            // Agregar un evento de clic al botón de cerrar sesión
-            logoutBtn.addEventListener('click', () => {
-                // Realizar una solicitud al endpoint /logout para cerrar sesión
-                fetch('/logout', {
-                    method: 'POST',
-                    credentials: 'same-origin' // Incluir las credenciales en la solicitud si es necesario
-                })
-                .then(response => {
-                    // Manejar la respuesta del servidor
-                    if (response.ok) {
-                        // Redireccionar al inicio de sesión o a otra página
-                        window.location.href = '/index.html';
-                    } else {
-                        console.log('Error al cerrar la sesión');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error en la solicitud:', error);
-                });
-            });
-        });
-    </script>
+    <script src="/scripts/sessionControl.js"></script>
+    <script src="/scripts/profile.js"></script>
 </body>
 </html>

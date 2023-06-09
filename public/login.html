@@ -5,34 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/login.css">
+    <link rel="icon" href="/icons/reso.svg" type="image/svg+xml">
 </head>
 <body>
-    <h1>Bienvenido a la página de Login</h1>
-
-    <!-- Registro -->
-    <h2>Registro</h2>
-    <form id="register-form" method="POST">
-        <label for="register-username">Usuario:</label>
-        <input type="text" id="register-username" name="username" required>
-        <br>
-        <label for="register-password">Contraseña:</label>
-        <input type="password" id="register-password" name="password" required>
-        <br>
-        <button type="submit">Registrarse</button>
-        <span id="error-text"></span>
-    </form>
-    <h2>Login</h2>
-    <!-- Inicio de sesión -->
-    <form id="login-form" method="POST">
-        <label for="login-username">Usuario:</label>
-        <input type="text" id="login-username" name="username" required>
-        <br>
-        <label for="login-password">Contraseña:</label>
-        <input type="password" id="login-password" name="password" required>
-        <br>
-        <button type="submit">Iniciar Sesión</button>
-        <span id="loging-error-text"></span>
-    </form>
+    <div id="Scene-Container">
+        <div id="header">
+            <h2>CodeCheck Task Manager</h2>
+            <h1 class="hidden">Denis</h1>
+            <div id="session-container" class="hidden">
+                <div id="profile" onclick="openProfile()" onmouseenter="change_profile_icon_color(true)" onmouseleave="change_profile_icon_color(false)">
+                    <div id="profile-icon-placeholder"></div>
+                    <p id="profile-button-text" class="profile-text">Perfil</p>
+                </div>
+                <div id="session" onclick="closeSession()" onmouseenter="change_session_icon_color(true)" onmouseleave="change_session_icon_color(false)">
+                    <div id="session-icon-placeholder"></div>
+                    <p class="profile-text">Cerrar sesion</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="Content">
+            <!-- Registro -->
+            <form id="register-form" class="form" method="POST">
+                <h2 class="form-title">Registro</h2>
+                <label for="register-username" class="form-label">Usuario:</label>
+                <input type="text" id="register-username" class="form-input"name="username" required>
+                <br>
+                <label for="register-password" class="form-label">Contraseña:</label>
+                <input type="password" id="register-password" class="form-input" name="password" required>
+                <br>
+                <button type="submit" class="action-button">Registrarse</button>
+                <div id="register-error-text" class="hidden"></div>
+            </form>
+            <!-- Inicio de sesión -->
+            <form id="login-form" class="form" method="POST">
+                <h2 class="form-title">Login</h2>
+                <label for="login-username" class="form-label">Usuario:</label>
+                <input type="text" id="login-username" class="form-input" name="username" required>
+                <br>
+                <label for="login-password" class="form-label">Contraseña:</label>
+                <input type="password" id="login-password" class="form-input" name="password" required>
+                <br>
+                <button type="submit" class="action-button">Iniciar Sesión</button>
+                <div id="loging-error-text" class="hidden"></div>
+            </form>
+        </div>
+    </div>
 
     <script src="scripts/login.js"></script>
 </body>

@@ -1,20 +1,103 @@
 // Función para verificar si el usuario ha iniciado sesión previamente
 function checkLoginStatus() {
-    // Obtener la cookie de sesión
-    var sessionCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('session='));
+    replace_profile_icon();
+    replace_session_icon();
 
-    if (sessionCookie) {
+    // Obtener el sessionId del localStorage
+    var sessionId = localStorage.getItem('sessionId');
+
+    if (sessionId) {
         // El usuario ha iniciado sesión
-        var username = sessionCookie.split('=')[1];
+        var userName = localStorage.getItem('userName');
 
         // Mostrar el nombre de usuario y enlace a "Mi Perfil"
-        document.getElementById('content').innerHTML = '<p>Bienvenido, ' + username + '!</p>' +
-        '<a href="profile.html">Mi Perfil</a>';
+        document.getElementById('session-container').classList.remove('hidden');
+        const usernameDisplay = document.getElementById('header').getElementsByTagName('h1')[0];
+        usernameDisplay.innerText = userName;
+        usernameDisplay.classList.remove('hidden');
     } else {
         // El usuario no ha iniciado sesión
         // Mostrar los botones de inicio de sesión y registro
-        document.getElementById('content').innerHTML = '<button onclick="login()">Iniciar Sesión</button>' +
-        '<button onclick="login()">Registrarse</button>';
+        document.getElementById('session-container').classList.add('hidden');
+    }
+}
+
+function replace_profile_icon(){
+    // Buscar el div con ID "profile-icon-placeholder"
+    var placeholder = document.getElementById('profile-icon-placeholder');
+    
+    // Crear un elemento SVG
+    var svgElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svgElement.setAttribute('class', 'profile-icon');
+    // svgElement.setAttribute('style', 'width: 65px;');
+    svgElement.style.width = '65px';
+    
+    // Cargar el contenido del archivo SVG
+    fetch('/icons/Profile-icon.svg')
+    .then(function(response) {
+        return response.text();
+    })
+    .then(function(svgContent) {
+        // Asignar el contenido del archivo SVG al elemento SVG
+        svgElement.innerHTML = svgContent;
+        
+        // Reemplazar el div de marcador de posición con el elemento SVG
+        placeholder.parentNode.replaceChild(svgElement, placeholder);
+    })
+    .catch(function(error) {
+        console.log('Error al cargar el archivo SVG:', error);
+    });
+}
+function replace_session_icon(){
+    // Buscar el div con ID "profile-icon-placeholder"
+    var placeholder = document.getElementById('session-icon-placeholder');
+
+    // Crear un elemento SVG
+    var svgElement = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svgElement.setAttribute('class', 'session-icon');
+    // svgElement.setAttribute('style', 'width: 65px;');
+    svgElement.style.width = '65px';
+    
+    // Cargar el contenido del archivo SVG
+    fetch('/icons/Session-icon.svg')
+    .then(function(response) {
+        return response.text();
+    })
+    .then(function(svgContent) {
+        // Asignar el contenido del archivo SVG al elemento SVG
+        svgElement.innerHTML = svgContent;
+        
+        // Reemplazar el div de marcador de posición con el elemento SVG
+        placeholder.parentNode.replaceChild(svgElement, placeholder);
+    })
+    .catch(function(error) {
+        console.log('Error al cargar el archivo SVG:', error);
+    });
+}
+function change_profile_icon_color(activate) {
+    var symbol = document.querySelector('symbol#profile-icon');
+
+    // Obtiene el elemento <path> dentro del símbolo SVG
+    var pathElement = symbol.querySelector('path');
+    
+    // Aplica el estilo al elemento <path> del ícono durante el hover
+    if (activate) {
+        pathElement.style.fill = 'yellow';
+    } else {
+        pathElement.style.fill = 'white';
+    }
+}
+function sessionIcon_ChangeColor(activate) {
+    var symbol = document.querySelector('symbol#session-icon');
+    
+    // Obtiene el elemento <path> dentro del símbolo SVG
+    var pathElement = symbol.querySelector('path');
+    
+    // Aplica el estilo al elemento <path> del ícono durante el hover
+    if (activate) {
+        pathElement.style.fill = 'yellow';
+    } else {
+        pathElement.style.fill = 'white';
     }
 }
 
@@ -26,22 +109,3 @@ function login() {
 
 // Verificar el estado de inicio de sesión al cargar la página
 window.addEventListener('DOMContentLoaded', checkLoginStatus);
-window.addEventListener('beforeunload', function(event) {
-    // Hacer una solicitud al servidor para cerrar la sesión cuando se cierre la página o se navegue a otra página
-    // Por ejemplo, puedes hacer una solicitud AJAX al servidor para cerrar la sesión
-
-    // Ejemplo de solicitud AJAX utilizando la biblioteca fetch
-    fetch('/logout', {
-        method: 'POST',
-        credentials: 'same-origin' // Incluir las credenciales en la solicitud si es necesario
-    }).then(response => {
-        // Manejar la respuesta del servidor
-        if (response.ok) {
-            console.log('Sesión cerrada correctamente');
-        } else {
-            console.log('Error al cerrar la sesión');
-        }
-    }).catch(error => {
-        console.error('Error en la solicitud:', error);
-    });
-});

@@ -5,9 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="/styles/error.css">
+    <link rel="icon" href="/icons/reso.svg" type="image/svg+xml">
 </head>
 <body>
-    <h1>Ups!</h1>
-    <p>Algo salio mal :(</p>
+    <div id="Content">
+        <H1>Ups!</H1>
+        <p class="error-message">Algo malio sal<br>:$</br></p>
+        <div id="go-back-button" onClick="goBackToIndex()">
+            <p class="button-text">volver</p>
+        </div>
+    </div>
+
+    <script>
+        function goBackToIndex(){
+            // Redirigir al formulario de inicio de sesión
+            window.location.href = 'index.html';
+        }
+    </script>
 </body>
 </html>

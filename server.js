@@ -17,7 +17,7 @@ function printTables(database) {
             console.error("Error al obtener las tablas:", err.message);
             return;
         }
-        
+
         console.log("Tablas disponibles:");
         tables.forEach(table => {
             console.log(table.name);
