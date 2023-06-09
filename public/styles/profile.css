@@ -45,8 +45,9 @@ h1{
 /* Estilos para selectedTask */
 #selectedTask {
     margin-top: 10%;
+/* Implementar Flexbox Aqui. */
+    display: flexbox;
     
-    /* Implementar Flexbox Aqui. */
 }
 #selected-title {
     width: auto;

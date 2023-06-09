@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,17 +10,20 @@
     <link rel="stylesheet" href="styles/index.css">
     <link rel="icon" href="/icons/reso.svg" type="image/svg+xml">
 </head>
+
 <body>
     <div id="Scene-Container">
         <div id="header">
             <h2>CodeCheck Task Manager</h2>
             <h1 class="hidden">Denis</h1>
             <div id="session-container" class="hidden">
-                <div id="profile" onclick="openProfile()" onmouseenter="change_profile_icon_color(true)" onmouseleave="change_profile_icon_color(false)">
+                <div id="profile" onclick="openProfile()" onmouseenter="change_profile_icon_color(true)"
+                    onmouseleave="change_profile_icon_color(false)">
                     <div id="profile-icon-placeholder"></div>
                     <p id="profile-button-text" class="profile-text">Perfil</p>
                 </div>
-                <div id="session" onclick="closeSession()" onmouseenter="sessionIcon_ChangeColor(true)" onmouseleave="sessionIcon_ChangeColor(false)">
+                <div id="session" onclick="closeSession()" onmouseenter="sessionIcon_ChangeColor(true)"
+                    onmouseleave="sessionIcon_ChangeColor(false)">
                     <div id="session-icon-placeholder"></div>
                     <p class="profile-text">Cerrar sesion</p>
                 </div>
@@ -27,13 +31,15 @@
         </div>
         <div id="content">
             <h1>Bienvenidos</h1>
-            <div class="ca-button">
-                <p>ingresar</p>
+            <div id="content" onclick="closeSession()" onmouseenter=" (true)" onmouseleave=" (false)">
+                <div class="ca-button" onclick="login()">
+                    <pp class="profile-text">ingresar</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <script src="/scripts/sessionControl.js"></script>
-    <script src="/scripts/index.js"></script>
+        <script src="/scripts/sessionControl.js"></script>
+        <script src="/scripts/index.js"></script>
 </body>
+
 </html>

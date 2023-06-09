@@ -106,7 +106,7 @@ function login() {
     // Redirigir al formulario de inicio de sesión
 
     //TODO: Implementar.
-
+    window.location.href = "login.html";
 }
 
 // Verificar el estado de inicio de sesión al cargar la página

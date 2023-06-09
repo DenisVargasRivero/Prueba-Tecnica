@@ -1,7 +1,7 @@
 function close() {
     // Obtener el sessionId desde el localStorage
     const sessionId = localStorage.getItem('sessionId');
-
+    
     // Si el sessionId existe en el localStorage, realizar la solicitud de cierre de sesión
     if (sessionId) {
         fetch('/users/logout', {
