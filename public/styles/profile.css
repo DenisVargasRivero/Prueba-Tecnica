@@ -42,6 +42,8 @@ h1{
     overflow: hidden;
 }
 
+
+
 /* Estilos para selectedTask */
 #selectedTask {
     margin-top: 10%;
@@ -49,15 +51,16 @@ h1{
     /* Implementar Flexbox Aqui. */
 }
 #selected-title {
-    width: auto;
+    width: 100%;
     height: 32px;
     border-radius: 10px;
     /* Width debe escalar proporionalmente */
 }
 #selected-description {
-    width: auto;
-    height: 32px;
+    width: 100%;
+    height: 60%;
     border-radius: 10px;
+    margin-top: 10px;
     /* Width debe escalar proporionalmente */
     /* Height debe ocupar el resto del espacio */
 }
@@ -161,4 +164,9 @@ h1{
 .task-button-icon{
     width: 2rem;
     height: 2rem;
+}
+.flexbox-vertical{
+    display: flexbox;
+    width: 70%;
+    flex-wrap: wrap;
 }

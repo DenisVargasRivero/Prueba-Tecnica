@@ -11,6 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
     replace_session_icon();
 });
 
+function closeSession() {
+    window.location.href = '/index.html';
+
+    localStorage.removeItem('sessionId');
+    localStorage.removeItem('userName');
+}
+
 function replace_session_icon(){
     // Buscar el div con ID "profile-icon-placeholder"
     var placeholder = document.getElementById('session-icon-placeholder');

@@ -115,5 +115,6 @@
 }
 
 .action-button:hover{
-    background-color: rgb(255, 161, 110);
+    background-color: rgb(84, 62, 46);
+    color: rgb(150, 102, 4);
 }
