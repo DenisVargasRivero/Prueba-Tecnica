@@ -1,4 +1,4 @@
-function closeSession() {
+function close() {
     // Obtener el sessionId desde el localStorage
     const sessionId = localStorage.getItem('sessionId');
 

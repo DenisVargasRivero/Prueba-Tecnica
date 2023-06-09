@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //Dentro de profile, pedir los tasks asociados al usuario.
 
     // Mostrar el nombre de usuario en el elemento correspondiente
-    usernameElement.textContent = `${username}`;
+    //TODO: Reemplazar texto
     replace_session_icon();
 });
 

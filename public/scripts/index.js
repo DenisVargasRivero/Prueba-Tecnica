@@ -104,7 +104,9 @@ function sessionIcon_ChangeColor(activate) {
 // Función para iniciar sesión
 function login() {
     // Redirigir al formulario de inicio de sesión
-    window.location.href = 'login.html';
+
+    //TODO: Implementar.
+
 }
 
 // Verificar el estado de inicio de sesión al cargar la página
